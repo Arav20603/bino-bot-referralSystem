@@ -38,7 +38,7 @@ export const logIn = async (req, res) => {
   try {
     const user = await userModel.findOne({email})
     if (!user) {
-      return res.status(500).json({success: false, msg: "User does not exist", err: error})
+      return res.status(500).json({success: false, msg: "User does not exist", err: error.message})
     }
     const isPassword = await bcrypt.compare(password, user.password)
     if (!isPassword) {
@@ -62,7 +62,7 @@ export const logout = async (req, res) => {
   try {
     res.status(201).json({success: true, msg: "Successfully logged out"})
   } catch (error) {
-     res.status(400).json({success: false, msg: "Error in user logout", error: error})
+     res.status(400).json({success: false, msg: "Error in user logout", error: error.message})
   }
 }
 
@@ -77,8 +77,9 @@ export const signUp = async (req, res) => {
       return res.status(400).json({success: false, msg: "User Already exists"})
     }
 
+    const replacedName = name.toLowerCase().replace(/\s+/g, '')
     const hashedPassword = await bcrypt.hash(password, 10)
-    const referralLink = `https://bino.bot/${name}`
+    const referralLink = `https://bino.bot/${replacedName}`
 
     if (referralLink === referrerLink) {
       return res.status(400).json({success: false, msg: "User cannot refer yourself"})
