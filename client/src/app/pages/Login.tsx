@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../hooks'
 import type { LoginProps } from '../../constants/types'
 import { fetchUser } from '../features/user/userSlice'
 import { images } from '../../constants/images'
+import { Bounce, toast } from 'react-toastify'
 
 const Login = () => {
   const dispatch = useAppDispatch()
@@ -16,7 +17,6 @@ const Login = () => {
   
   useEffect(() => {
     if (error) {
-      alert(`Invalid Credentials`)
       setForm({ ...form, password: '' })
     }
   }, [error, dispatch])
@@ -26,11 +26,36 @@ const Login = () => {
     try {
       const res = await dispatch(fetchUser(form)).unwrap()
       if (res) {
-        alert('User succesfully logged in.')
-        navigate('/')
+        toast.success('User successfully logged in...', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
       }
-    } catch (error) {
-      // handle error silently
+
+      } catch (err) {
+        toast.error(`Invalid Credentials!
+            Please try again...`, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
     }
   }
 

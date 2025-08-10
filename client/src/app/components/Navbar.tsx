@@ -3,6 +3,7 @@ import { images } from '../../constants/images'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../hooks'
 import { logOut } from '../features/user/userSlice'
+import { Bounce, toast } from 'react-toastify'
 
 const Navbar = () => {
   const dispatch = useAppDispatch()
@@ -25,14 +26,35 @@ const Navbar = () => {
 
   const handleLogout = () => {
     try {
-      dispatch(logOut())
-      alert(`Successfully logged out`)
-      setInterval(() => {
+        dispatch(logOut())
+        toast.success('User successfully logged out...', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+
+      setTimeout(() => {
         handleClick()
-        navigate('/login')
-      }, 1000)
+        navigate('/login');
+      }, 1000);
     } catch (error) {
-      alert(`Error in logging out: ${error}`)
+      toast.error(`Error logging out`, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
     
   }

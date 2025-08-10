@@ -4,6 +4,7 @@ import { useAppDispatch } from '../hooks'
 import { Link, useNavigate } from 'react-router-dom'
 import { createUser } from '../features/user/userSlice'
 import { images } from '../../constants/images'
+import { Bounce, toast } from 'react-toastify'
 
 const SignUp = () => {
   const dispatch = useAppDispatch()
@@ -17,11 +18,35 @@ const SignUp = () => {
     e.preventDefault()
     try {
       const result = await dispatch(createUser(form)).unwrap()
-      alert('User Created successfully')
-      navigate('/login')
+      if (result) {
+        toast.success('User created succesfully', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        })
+        setTimeout(() => {
+          navigate('/login')
+        }, 1000)
+      }
     } catch (err: any) {
-      alert(`Error creating user: ${err.message || err}`)
-      setForm({ ...form, password: '' })
+        toast.error(`Error in creating user! Please try again...`, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+        setForm({ ...form, password: '' })
     }
   }
 
