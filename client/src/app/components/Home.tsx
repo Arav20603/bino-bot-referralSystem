@@ -1,17 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Navbar from './Navbar'
 
 const Home = () => {
+  const [user, setUser] = useState({
+      name: '', email: ''
+    })
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (localStorage.getItem('user') === null) {
+    const user = localStorage.getItem('user')
+    if (user === null) {
       navigate('/login')
     }
+    
   })
   return (
-    <div>
-      Welcome User!
+    <div className='pt-40 min-h-screen bg-blue-50'>
+      <Navbar />
     </div>
   )
 }

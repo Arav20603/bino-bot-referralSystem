@@ -25,7 +25,7 @@ export const fetchUser = createAsyncThunk(
   async (userData: LoginProps) => {
     const res = await axios.post(`${API_URL}/login`, userData)
     console.log(res.data)
-    return res.data
+    return res.data.user
   }
 )
 

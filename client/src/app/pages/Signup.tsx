@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import type { CreateUserProps } from '../../constants/types'
-import { useAppDispatch, useAppSelector } from '../hooks'
-import {Link, useNavigate} from 'react-router-dom'
+import { useAppDispatch } from '../hooks'
+import { Link, useNavigate } from 'react-router-dom'
 import { createUser } from '../features/user/userSlice'
+import { images } from '../../constants/images'
 
 const SignUp = () => {
   const dispatch = useAppDispatch()
@@ -12,8 +13,6 @@ const SignUp = () => {
     name: '', email: '', password: '', referrerLink: null
   })
 
-
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
@@ -21,59 +20,101 @@ const SignUp = () => {
       alert('User Created successfully')
       navigate('/login')
     } catch (err: any) {
-      alert(`Error is creating user: ${err.message || err}`)
-      setForm({...form, password: ''})
+      alert(`Error creating user: ${err.message || err}`)
+      setForm({ ...form, password: '' })
     }
   }
 
   return (
-    <div className='m-20'>
-      <h1 className='ml-10 underline text-4xl'>Signup</h1>
-     <form onSubmit={handleSubmit}
-      className='p-5 bg-gray-100 w-100 flex flex-col gap-5'
-     >
-
-      {/* name input */}
-        <div className="flex flex-col gap-2">
-          <label>Name:</label>
-          <input type="text" name="name" value={form.name}
-          onChange={(e) => setForm({...form, name: e.target.value.toString()})} placeholder='Enter your email'
-          className='p-2 bg-white rounded-2xl' required
-          />
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
+        
+        {/* Header */}
+          <div className="flex items-center mb-6 justify-center">
+            <img src={images.bino} alt="" className="w-16" />
+            <h1 className="ml-4 font-bold text-3xl text-gray-800 border-b-4 border-blue-500 inline-block">
+              Sign-Up
+            </h1>
         </div>
 
-      {/* email input */}
-        <div className="flex flex-col gap-2">
-          <label>Email:</label>
-          <input type="email" name="email" value={form.email}
-          onChange={(e) => setForm({...form, email: e.target.value.toString()})} placeholder='Enter your email'
-          className='p-2 bg-white rounded-2xl' required
-          />
-        </div>
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          
+          {/* name input */}
+          <div className="flex flex-col gap-2">
+            <label className="text-gray-700 font-medium">Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value.toString() })}
+              placeholder="Enter your name"
+              className="p-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
+            />
+          </div>
 
-        {/* referral code input */}
-        <div className="flex flex-col gap-2">
-          <label>Referral Link:</label>
-          <input type="text" name="phoneNo" value={form.referrerLink ?? ''}
-          onChange={(e) => setForm({...form, referrerLink: e.target.value})} 
-          className='p-2 bg-white rounded-2xl'
-          />
-        </div>
+          {/* email input */}
+          <div className="flex flex-col gap-2">
+            <label className="text-gray-700 font-medium">Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value.toString() })}
+              placeholder="Enter your email"
+              className="p-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
+            />
+          </div>
 
-        {/* password input */}
-        <div className="flex flex-col gap-2">
-          <label>Password:</label>
-          <input type="text" name="password" value={form.password}
-          onChange={(e) => setForm({...form, password: e.target.value.toString()})} placeholder='Enter your password' 
-          className='p-2 bg-white rounded-2xl' required
-          />
-          <p className='text-xs text-gray-500'>Minimum 10 characters, atleast 1 Uppercase and 1 Lowercase, 1 special characters @,#,$,%,etc</p>
-        </div>
+          {/* referral code input */}
+          <div className="flex flex-col gap-2">
+            <label className="text-gray-700 font-medium">Referral Link:</label>
+            <input
+              type="text"
+              name="referrerLink"
+              value={form.referrerLink ?? ''}
+              onChange={(e) => setForm({ ...form, referrerLink: e.target.value })}
+              placeholder="Enter referral link (optional)"
+              className="p-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
 
-        {/* btn */}
-        <button type='submit' className='bg-blue-500 p-2 w-30 ml-20 rounded-2xl'>Signup</button>
-        <p>Already have an account? <Link to='/login' className='text-blue-500 underline'>Login</Link></p>
-     </form>
+          {/* password input */}
+          <div className="flex flex-col gap-2">
+            <label className="text-gray-700 font-medium">Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={(e) => setForm({ ...form, password: e.target.value.toString() })}
+              placeholder="Enter your password"
+              className="p-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
+            />
+            <p className="text-xs text-gray-500">
+              Minimum 8 characters, at least 1 uppercase, 1 lowercase, and 1 special character (@, #, $, %, etc.)
+            </p>
+          </div>
+
+          {/* btn */}
+          <button
+            type="submit"
+            className="bg-blue-500 text-white p-3 rounded-xl font-semibold hover:bg-blue-600 transition-all duration-200 shadow-md hover:shadow-lg"
+          >
+            Sign Up
+          </button>
+
+          {/* login link */}
+          <p className="text-sm text-gray-600 text-center">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-600 hover:underline font-medium">
+              Login
+            </Link>
+          </p>
+        </form>
+      </div>
     </div>
   )
 }
