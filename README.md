@@ -19,14 +19,20 @@ These points can be used later for discounts or other perks.
 
 ## Screenshots
 
-**Login page**  ![bino-1](https://github.com/user-attachments/assets/e70b7e3e-dc6d-4fda-bbc1-ced0c6715621)
+**Login Page**  
+<img src="https://github.com/user-attachments/assets/e70b7e3e-dc6d-4fda-bbc1-ced0c6715621" width="400"/>
 
-**Signup page**  ![bino-5](https://github.com/user-attachments/assets/6475f280-043b-48e8-9273-497a62a4ead3)
+**Signup Page**  
+<img src="https://github.com/user-attachments/assets/6475f280-043b-48e8-9273-497a62a4ead3" width="400"/>
 
-**Home page 1**  ![bino-2](https://github.com/user-attachments/assets/e017e9cb-62e5-4df5-b07a-71000b386a99)
-**Home page 2**  ![bino-3](https://github.com/user-attachments/assets/d1a848fb-9a00-4b68-97e9-85ea7da898f9)
+**Home Page 1**  
+<img src="https://github.com/user-attachments/assets/e017e9cb-62e5-4df5-b07a-71000b386a99" width="400"/>  
 
-**Menu** ![bino-4](https://github.com/user-attachments/assets/97c4b4eb-454c-46e1-8b1a-c04147459763)
+**Home Page 2**  
+<img src="https://github.com/user-attachments/assets/d1a848fb-9a00-4b68-97e9-85ea7da898f9" width="400"/>  
+
+**Menu**  
+<img src="https://github.com/user-attachments/assets/97c4b4eb-454c-46e1-8b1a-c04147459763" width="400"/>
 
 
 ---
@@ -45,6 +51,9 @@ These points can be used later for discounts or other perks.
 ```bash
 # clone the repo
 git clone [https://github.com/arav](https://github.com/Arav20603/bino-bot-referralSystem.git)
+
+# go to the project folder
+cd bino-bot-referralSystem
 
 # go to the folder
 cd client
