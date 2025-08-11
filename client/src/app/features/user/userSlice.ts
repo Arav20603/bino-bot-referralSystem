@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { CreateUserProps, GetUserProps, LoginProps, UserSliceStateProps } from "../../../constants/types";
+import type { CreateUserProps, LoginProps, UserSliceStateProps } from "../../../constants/types";
 import axios from "axios";
 
 

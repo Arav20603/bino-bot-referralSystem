@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { images } from '../../constants/images';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../hooks';
 import { logOut } from '../features/user/userSlice';
 import { Bounce, toast } from 'react-toastify';
