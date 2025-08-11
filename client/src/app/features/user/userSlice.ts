@@ -9,7 +9,7 @@ const initialState: UserSliceStateProps = {
   error: null
 }
 
-const API_URL = 'http://localhost:5000/api/web/bino-bot'
+const API_URL = 'https://bino-bot-backend.onrender.com'
 
 export const createUser = createAsyncThunk(
   'user/signup',
