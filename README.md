@@ -50,7 +50,7 @@ These points can be used later for discounts or other perks.
 
 ```bash
 # clone the repo
-git clone [https://github.com/arav](https://github.com/Arav20603/bino-bot-referralSystem.git)
+git clone https://github.com/Arav20603/bino-bot-referralSystem.git
 
 # go to the project folder
 cd bino-bot-referralSystem
