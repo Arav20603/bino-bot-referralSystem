@@ -15,6 +15,9 @@ These points can be used later for discounts or other perks.
 - Simple wallet to keep track of points
 - Can be connected to any system for redeeming perks
 
+## Live demo
+🌐https://bino-bot-referral-frontend.onrender.com/
+
 ---
 
 ## Screenshots
